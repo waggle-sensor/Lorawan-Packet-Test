@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6db61984a484bcdbaa2355a7ef1db103 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="
+    position: fixed;
+    top: 20px; right: 20px; width: 220px; height: 100px;
+    background-color: white;
+    border:2px solid grey; z-index:9999; font-size:14px;
+    padding: 10px;
+    ">
+<b>Legend</b><br>
+🔵 <b>Lorawan Gateway</b><br>
+🟢🔴 <b>Device Locations</b><br>
+⚫️ <b>Max Range Circle</b> (dashed)<br>
+</div>
+    
+            <div class="folium-map" id="map_6db61984a484bcdbaa2355a7ef1db103" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6db61984a484bcdbaa2355a7ef1db103 = L.map(
+                "map_6db61984a484bcdbaa2355a7ef1db103",
+                {
+                    center: [41.7183908, -87.983922],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d323dea6766725d53e02725836ff6ef7 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d323dea6766725d53e02725836ff6ef7.addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var marker_0adeaec246ff833e8c182cf5ad05e664 = L.marker(
+                [41.7183908, -87.983922],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_a031f725dec7ffdc7e3ba3bb68fac2b0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "feed",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_0adeaec246ff833e8c182cf5ad05e664.bindTooltip(
+                `<div>
+                     Lorawan Gateway
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0adeaec246ff833e8c182cf5ad05e664.setIcon(icon_a031f725dec7ffdc7e3ba3bb68fac2b0);
+            
+    
+            var marker_c44cdbfe2d3c025fbf697482ac440929 = L.marker(
+                [41.7084165, -87.9865874],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_9942e5888c5e1fbb4754dd3ee8f6476a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cba7c5ab343f9e68b2dd2a45e48c749f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a2b80b428e72fa79fea6a868719ebc4b = $(`<div id="html_a2b80b428e72fa79fea6a868719ebc4b" style="width: 100.0%; height: 100.0%;"><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -107.00 dBm, Avg SNR: -10.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -107.40 dBm, Avg SNR: -9.34 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -107.50 dBm, Avg SNR: -10.65 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -107.00 dBm, Avg SNR: -10.03 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -107.00 dBm, Avg SNR: -10.78 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -107.00 dBm, Avg SNR: -7.35 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -106.67 dBm, Avg SNR: -9.87 dB, Packet Loss Ratio: 33.33%<br><br></div>`)[0];
+                popup_cba7c5ab343f9e68b2dd2a45e48c749f.setContent(html_a2b80b428e72fa79fea6a868719ebc4b);
+            
+        
+
+        marker_c44cdbfe2d3c025fbf697482ac440929.bindPopup(popup_cba7c5ab343f9e68b2dd2a45e48c749f)
+        ;
+
+        
+    
+    
+            marker_c44cdbfe2d3c025fbf697482ac440929.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 1129.8 m, more info...
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c44cdbfe2d3c025fbf697482ac440929.setIcon(icon_9942e5888c5e1fbb4754dd3ee8f6476a);
+            
+    
+            var marker_c7d4a2a5617563122f348d5636600656 = L.marker(
+                [41.7091989, -87.9847373],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_e7055753a9fd690324a7eb1d7a9e43dc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8c519be37d173b75b6c4aadca8959795 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ead8cf9d91b8aa57e79e3c70ccd76cdd = $(`<div id="html_ead8cf9d91b8aa57e79e3c70ccd76cdd" style="width: 100.0%; height: 100.0%;"><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -107.00 dBm, Avg SNR: -10.35 dB, Packet Loss Ratio: 50.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -108.00 dBm, Avg SNR: -12.80 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -108.00 dBm, Avg SNR: -8.00 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -107.00 dBm, Avg SNR: -9.70 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -107.00 dBm, Avg SNR: -11.24 dB, Packet Loss Ratio: 20.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -107.67 dBm, Avg SNR: -10.67 dB, Packet Loss Ratio: 0.00%<br><br></div>`)[0];
+                popup_8c519be37d173b75b6c4aadca8959795.setContent(html_ead8cf9d91b8aa57e79e3c70ccd76cdd);
+            
+        
+
+        marker_c7d4a2a5617563122f348d5636600656.bindPopup(popup_8c519be37d173b75b6c4aadca8959795)
+        ;
+
+        
+    
+    
+            marker_c7d4a2a5617563122f348d5636600656.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 1023.2 m, more info...
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c7d4a2a5617563122f348d5636600656.setIcon(icon_e7055753a9fd690324a7eb1d7a9e43dc);
+            
+    
+            var marker_1f7f288a18832831e8459419a314ccfb = L.marker(
+                [41.7134115, -87.9854169],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_814f8145b4646bac1e2399825c6c35a0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9d6061f0bb7b993e742ad290997a88ce = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d9ad121d009812a8e14580ba02020b4f = $(`<div id="html_d9ad121d009812a8e14580ba02020b4f" style="width: 100.0%; height: 100.0%;"><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -100.00 dBm, Avg SNR: 4.40 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -103.00 dBm, Avg SNR: 0.80 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -95.33 dBm, Avg SNR: 8.30 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -97.33 dBm, Avg SNR: 7.60 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -97.67 dBm, Avg SNR: 6.07 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -99.00 dBm, Avg SNR: 5.47 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -96.67 dBm, Avg SNR: 8.07 dB, Packet Loss Ratio: 0.00%<br><br></div>`)[0];
+                popup_9d6061f0bb7b993e742ad290997a88ce.setContent(html_d9ad121d009812a8e14580ba02020b4f);
+            
+        
+
+        marker_1f7f288a18832831e8459419a314ccfb.bindPopup(popup_9d6061f0bb7b993e742ad290997a88ce)
+        ;
+
+        
+    
+    
+            marker_1f7f288a18832831e8459419a314ccfb.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 566.9 m, more info...
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1f7f288a18832831e8459419a314ccfb.setIcon(icon_814f8145b4646bac1e2399825c6c35a0);
+            
+    
+            var marker_e8834269bba218371bc44e7a40ea94fe = L.marker(
+                [41.7162506, -87.98261],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_0196291274dc7cca44d84ef138497f7a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bdf8004a09a58d1f01d5ae347b836232 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b7ec0e06c4a274a64a0e9ea33d7ce9d3 = $(`<div id="html_b7ec0e06c4a274a64a0e9ea33d7ce9d3" style="width: 100.0%; height: 100.0%;"><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -95.67 dBm, Avg SNR: 7.60 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -95.33 dBm, Avg SNR: 8.17 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -95.50 dBm, Avg SNR: 7.75 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -100.33 dBm, Avg SNR: 4.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -101.67 dBm, Avg SNR: 1.10 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -99.00 dBm, Avg SNR: 4.07 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -103.67 dBm, Avg SNR: -2.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -101.00 dBm, Avg SNR: 2.77 dB, Packet Loss Ratio: 0.00%<br><br></div>`)[0];
+                popup_bdf8004a09a58d1f01d5ae347b836232.setContent(html_b7ec0e06c4a274a64a0e9ea33d7ce9d3);
+            
+        
+
+        marker_e8834269bba218371bc44e7a40ea94fe.bindPopup(popup_bdf8004a09a58d1f01d5ae347b836232)
+        ;
+
+        
+    
+    
+            marker_e8834269bba218371bc44e7a40ea94fe.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 261.6 m, more info...
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e8834269bba218371bc44e7a40ea94fe.setIcon(icon_0196291274dc7cca44d84ef138497f7a);
+            
+    
+            var marker_000540caa7a6532ed7e9581cd2bba908 = L.marker(
+                [41.7172929, -87.9823525],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_c9c02af9a35cb7c2e575871ca06e3784 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_62cebccf96ab857e7673e9679c41cea1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4347f86e902a64d148ebf760183f568a = $(`<div id="html_4347f86e902a64d148ebf760183f568a" style="width: 100.0%; height: 100.0%;"><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -98.00 dBm, Avg SNR: 5.60 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -99.00 dBm, Avg SNR: 5.60 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -99.00 dBm, Avg SNR: 3.60 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -97.67 dBm, Avg SNR: 6.13 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -101.00 dBm, Avg SNR: 1.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -95.00 dBm, Avg SNR: 8.07 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -98.33 dBm, Avg SNR: 4.37 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -102.67 dBm, Avg SNR: -0.83 dB, Packet Loss Ratio: 0.00%<br><br></div>`)[0];
+                popup_62cebccf96ab857e7673e9679c41cea1.setContent(html_4347f86e902a64d148ebf760183f568a);
+            
+        
+
+        marker_000540caa7a6532ed7e9581cd2bba908.bindPopup(popup_62cebccf96ab857e7673e9679c41cea1)
+        ;
+
+        
+    
+    
+            marker_000540caa7a6532ed7e9581cd2bba908.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 178.7 m, more info...
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_000540caa7a6532ed7e9581cd2bba908.setIcon(icon_c9c02af9a35cb7c2e575871ca06e3784);
+            
+    
+            var marker_497906b2566f5ab1c826990652ec207d = L.marker(
+                [41.7180865, -87.9817115],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_c8f542e3f23fabd5a73d597f49125337 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_da3ba4952d210cba3480b08b42d8665e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3aff678864b6753f8442a01de403f30b = $(`<div id="html_3aff678864b6753f8442a01de403f30b" style="width: 100.0%; height: 100.0%;"><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -84.00 dBm, Avg SNR: 11.73 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -81.67 dBm, Avg SNR: 12.10 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -81.00 dBm, Avg SNR: 11.65 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -85.33 dBm, Avg SNR: 12.03 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -82.67 dBm, Avg SNR: 13.37 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -85.33 dBm, Avg SNR: 12.00 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -82.50 dBm, Avg SNR: 12.90 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -82.67 dBm, Avg SNR: 13.07 dB, Packet Loss Ratio: 0.00%<br><br></div>`)[0];
+                popup_da3ba4952d210cba3480b08b42d8665e.setContent(html_3aff678864b6753f8442a01de403f30b);
+            
+        
+
+        marker_497906b2566f5ab1c826990652ec207d.bindPopup(popup_da3ba4952d210cba3480b08b42d8665e)
+        ;
+
+        
+    
+    
+            marker_497906b2566f5ab1c826990652ec207d.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 187.0 m, more info...
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_497906b2566f5ab1c826990652ec207d.setIcon(icon_c8f542e3f23fabd5a73d597f49125337);
+            
+    
+            var marker_fb7d041fa3c513ae707bed1f3d8c974a = L.marker(
+                [41.7181333, -87.9821353],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_2b1b8ba3ad4a422f6c9703bcf0acc50a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1164f96457296323ff105690bf5123ad = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a86afe7263a85eb3ac82e068b5dd0446 = $(`<div id="html_a86afe7263a85eb3ac82e068b5dd0446" style="width: 100.0%; height: 100.0%;"><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -106.00 dBm, Avg SNR: -7.60 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -106.00 dBm, Avg SNR: -8.23 dB, Packet Loss Ratio: 33.33%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -106.00 dBm, Avg SNR: -12.00 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -105.00 dBm, Avg SNR: -6.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -107.00 dBm, Avg SNR: -10.50 dB, Packet Loss Ratio: 33.33%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -106.00 dBm, Avg SNR: -10.27 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -105.00 dBm, Avg SNR: -4.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -106.00 dBm, Avg SNR: -5.34 dB, Packet Loss Ratio: 0.00%<br><br></div>`)[0];
+                popup_1164f96457296323ff105690bf5123ad.setContent(html_a86afe7263a85eb3ac82e068b5dd0446);
+            
+        
+
+        marker_fb7d041fa3c513ae707bed1f3d8c974a.bindPopup(popup_1164f96457296323ff105690bf5123ad)
+        ;
+
+        
+    
+    
+            marker_fb7d041fa3c513ae707bed1f3d8c974a.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 151.4 m, more info...
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fb7d041fa3c513ae707bed1f3d8c974a.setIcon(icon_2b1b8ba3ad4a422f6c9703bcf0acc50a);
+            
+    
+            var marker_32cf49bd3c9f98b15fc7dc53a1d764f9 = L.marker(
+                [41.7182865, -87.9835116],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_8abce5e80fd1eebde7f412d6cb41ca84 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3048d1e703f8faceb07793b58fc2ae62 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5714e12288d9a110b21e0ae33d96bb04 = $(`<div id="html_5714e12288d9a110b21e0ae33d96bb04" style="width: 100.0%; height: 100.0%;"><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -47.33 dBm, Avg SNR: 12.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -44.00 dBm, Avg SNR: 14.00 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -100.00 dBm, Avg SNR: -15.20 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -52.33 dBm, Avg SNR: 13.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -52.67 dBm, Avg SNR: 12.90 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -44.67 dBm, Avg SNR: 12.17 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -59.33 dBm, Avg SNR: 12.17 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -54.67 dBm, Avg SNR: 14.60 dB, Packet Loss Ratio: 0.00%<br><br></div>`)[0];
+                popup_3048d1e703f8faceb07793b58fc2ae62.setContent(html_5714e12288d9a110b21e0ae33d96bb04);
+            
+        
+
+        marker_32cf49bd3c9f98b15fc7dc53a1d764f9.bindPopup(popup_3048d1e703f8faceb07793b58fc2ae62)
+        ;
+
+        
+    
+    
+            marker_32cf49bd3c9f98b15fc7dc53a1d764f9.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 36.1 m, more info...
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_32cf49bd3c9f98b15fc7dc53a1d764f9.setIcon(icon_8abce5e80fd1eebde7f412d6cb41ca84);
+            
+    
+            var marker_c6bd76ffb74d9b2690dd285e29b81ad6 = L.marker(
+                [41.718348, -87.9835092],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_4ad5f262a80d856e192760ef0b070e88 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1f1069aa1f4d3fb3ebea2f0f45e0c6fe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_52aa594c24947a1b44d9df764ca5ab75 = $(`<div id="html_52aa594c24947a1b44d9df764ca5ab75" style="width: 100.0%; height: 100.0%;"><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -81.00 dBm, Avg SNR: 12.23 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -76.33 dBm, Avg SNR: 13.07 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -73.00 dBm, Avg SNR: 12.00 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -79.33 dBm, Avg SNR: 12.10 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -78.67 dBm, Avg SNR: 14.30 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -83.33 dBm, Avg SNR: 12.33 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -75.67 dBm, Avg SNR: 13.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -82.00 dBm, Avg SNR: 12.27 dB, Packet Loss Ratio: 0.00%<br><br></div>`)[0];
+                popup_1f1069aa1f4d3fb3ebea2f0f45e0c6fe.setContent(html_52aa594c24947a1b44d9df764ca5ab75);
+            
+        
+
+        marker_c6bd76ffb74d9b2690dd285e29b81ad6.bindPopup(popup_1f1069aa1f4d3fb3ebea2f0f45e0c6fe)
+        ;
+
+        
+    
+    
+            marker_c6bd76ffb74d9b2690dd285e29b81ad6.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 34.7 m, more info...
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c6bd76ffb74d9b2690dd285e29b81ad6.setIcon(icon_4ad5f262a80d856e192760ef0b070e88);
+            
+    
+            var marker_bc21678f15f6b3c7a9c2b9781afc4393 = L.marker(
+                [41.7184466, -87.9799416],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_96e6c9502737ad00a85b0a98a0a34dce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_87b35b28c0e8311cf9655619b6273325 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0b2d5f2edace150c9d079e11718d0bc9 = $(`<div id="html_0b2d5f2edace150c9d079e11718d0bc9" style="width: 100.0%; height: 100.0%;"><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -81.00 dBm, Avg SNR: 13.07 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -77.33 dBm, Avg SNR: 14.00 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -75.50 dBm, Avg SNR: 11.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -81.67 dBm, Avg SNR: 12.33 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -82.00 dBm, Avg SNR: 12.97 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -80.00 dBm, Avg SNR: 11.83 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -79.00 dBm, Avg SNR: 13.23 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -81.33 dBm, Avg SNR: 14.20 dB, Packet Loss Ratio: 0.00%<br><br></div>`)[0];
+                popup_87b35b28c0e8311cf9655619b6273325.setContent(html_0b2d5f2edace150c9d079e11718d0bc9);
+            
+        
+
+        marker_bc21678f15f6b3c7a9c2b9781afc4393.bindPopup(popup_87b35b28c0e8311cf9655619b6273325)
+        ;
+
+        
+    
+    
+            marker_bc21678f15f6b3c7a9c2b9781afc4393.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 331.3 m, more info...
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bc21678f15f6b3c7a9c2b9781afc4393.setIcon(icon_96e6c9502737ad00a85b0a98a0a34dce);
+            
+    
+            var marker_efb8c674c15e7f3ba629db82ce54f2cc = L.marker(
+                [41.7184647, -87.9808911],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_52f3cf806e657ddea5bd78880c69e56c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5f6e41345243883c267253cb27efe967 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7c8e8903f420b2549e72e48043c7916b = $(`<div id="html_7c8e8903f420b2549e72e48043c7916b" style="width: 100.0%; height: 100.0%;"><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -76.67 dBm, Avg SNR: 12.30 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -78.33 dBm, Avg SNR: 12.43 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 16.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -72.67 dBm, Avg SNR: 12.23 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -76.33 dBm, Avg SNR: 12.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -76.00 dBm, Avg SNR: 14.50 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 32.0, <b>Spreading Factor:</b> 9.0, Avg RSSI: -76.00 dBm, Avg SNR: 12.00 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 7.0, Avg RSSI: -76.67 dBm, Avg SNR: 12.47 dB, Packet Loss Ratio: 0.00%<br><br><b>Packet Size:</b> 64.0, <b>Spreading Factor:</b> 8.0, Avg RSSI: -75.00 dBm, Avg SNR: 14.30 dB, Packet Loss Ratio: 0.00%<br><br></div>`)[0];
+                popup_5f6e41345243883c267253cb27efe967.setContent(html_7c8e8903f420b2549e72e48043c7916b);
+            
+        
+
+        marker_efb8c674c15e7f3ba629db82ce54f2cc.bindPopup(popup_5f6e41345243883c267253cb27efe967)
+        ;
+
+        
+    
+    
+            marker_efb8c674c15e7f3ba629db82ce54f2cc.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 252.3 m, more info...
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_efb8c674c15e7f3ba629db82ce54f2cc.setIcon(icon_52f3cf806e657ddea5bd78880c69e56c);
+            
+    
+            var marker_2b23c31f5a0f05f76216113679c7c6be = L.marker(
+                [41.7042947, -87.9910932],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_bd9ccf68681d764aa3abe52ff9cbe323 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_2b23c31f5a0f05f76216113679c7c6be.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 1675.5 m, Failed to join
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2b23c31f5a0f05f76216113679c7c6be.setIcon(icon_bd9ccf68681d764aa3abe52ff9cbe323);
+            
+    
+            var marker_0118209a7aa82c7ef142811489458f08 = L.marker(
+                [41.7045914, -87.9905708],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var icon_905676931de2541316142b03698f2179 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_0118209a7aa82c7ef142811489458f08.bindTooltip(
+                `<div>
+                     <b>Distance to gw:</b> 1629.5 m, Failed to join
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0118209a7aa82c7ef142811489458f08.setIcon(icon_905676931de2541316142b03698f2179);
+            
+    
+            var circle_cc9dcd99731df31a7dcd160f337715ac = L.circle(
+                [41.7183908, -87.983922],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": "10, 10", "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1129.8118288993212, "stroke": true, "weight": 2}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var poly_line_fda26dd9f3a768023e539df58f0be900 = L.polyline(
+                [[41.7183908, -87.983922], [41.71838999795646, -87.99749901305091]],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": "5, 5", "dashOffset": null, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var marker_7c1d90385c7cc52bfd6c98761a243376 = L.marker(
+                [41.71839039897823, -87.99071050652546],
+                {
+}
+            ).addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+            var div_icon_a28e06169c2d7a59605ea4734d676271 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"font-size: 12pt; color: black;\"\u003e1129.8m\u003c/div\u003e\n        ",
+  "className": "empty",
+});
+            marker_7c1d90385c7cc52bfd6c98761a243376.setIcon(div_icon_a28e06169c2d7a59605ea4734d676271);
+        
+    
+                marker_7c1d90385c7cc52bfd6c98761a243376.setIcon(div_icon_a28e06169c2d7a59605ea4734d676271);
+            
+    
+            tile_layer_d323dea6766725d53e02725836ff6ef7.addTo(map_6db61984a484bcdbaa2355a7ef1db103);
+        
+    
+                marker_0adeaec246ff833e8c182cf5ad05e664.setIcon(icon_a031f725dec7ffdc7e3ba3bb68fac2b0);
+            
+    
+                marker_c44cdbfe2d3c025fbf697482ac440929.setIcon(icon_9942e5888c5e1fbb4754dd3ee8f6476a);
+            
+    
+                marker_c7d4a2a5617563122f348d5636600656.setIcon(icon_e7055753a9fd690324a7eb1d7a9e43dc);
+            
+    
+                marker_1f7f288a18832831e8459419a314ccfb.setIcon(icon_814f8145b4646bac1e2399825c6c35a0);
+            
+    
+                marker_e8834269bba218371bc44e7a40ea94fe.setIcon(icon_0196291274dc7cca44d84ef138497f7a);
+            
+    
+                marker_000540caa7a6532ed7e9581cd2bba908.setIcon(icon_c9c02af9a35cb7c2e575871ca06e3784);
+            
+    
+                marker_497906b2566f5ab1c826990652ec207d.setIcon(icon_c8f542e3f23fabd5a73d597f49125337);
+            
+    
+                marker_fb7d041fa3c513ae707bed1f3d8c974a.setIcon(icon_2b1b8ba3ad4a422f6c9703bcf0acc50a);
+            
+    
+                marker_32cf49bd3c9f98b15fc7dc53a1d764f9.setIcon(icon_8abce5e80fd1eebde7f412d6cb41ca84);
+            
+    
+                marker_c6bd76ffb74d9b2690dd285e29b81ad6.setIcon(icon_4ad5f262a80d856e192760ef0b070e88);
+            
+    
+                marker_bc21678f15f6b3c7a9c2b9781afc4393.setIcon(icon_96e6c9502737ad00a85b0a98a0a34dce);
+            
+    
+                marker_efb8c674c15e7f3ba629db82ce54f2cc.setIcon(icon_52f3cf806e657ddea5bd78880c69e56c);
+            
+    
+                marker_2b23c31f5a0f05f76216113679c7c6be.setIcon(icon_bd9ccf68681d764aa3abe52ff9cbe323);
+            
+    
+                marker_0118209a7aa82c7ef142811489458f08.setIcon(icon_905676931de2541316142b03698f2179);
+            
+    
+                marker_7c1d90385c7cc52bfd6c98761a243376.setIcon(div_icon_a28e06169c2d7a59605ea4734d676271);
+            
+</script>
+</html>
