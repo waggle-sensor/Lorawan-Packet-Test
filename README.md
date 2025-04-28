@@ -7,14 +7,17 @@ of signal and packet size range on our rpi.lorawan compute
 ## TODOs
 
 - [X] get the data and split raw & processed
-- [ ] include the rpi.lorawan items in BOM.csv
 - [ ] write the results.pynb
+- [ ] include the rpi.lorawan items in BOM.csv
 - [ ] Write the readme, include...
-    - test set up
     - lorawan test device configuration instructions
         - include the foam board as well
     - rpi.lorawan configuration
         - include an image of the rpi.lorawan set up at the location
+     - test set up
+        - instructions
+        - materials
+        - etc.
     - more?
 - [ ] more?
 
