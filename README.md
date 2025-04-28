@@ -6,7 +6,7 @@ of signal and packet size range on our rpi.lorawan compute
 
 ## TODOs
 
-- [ ] get the data and split raw & processed
+- [X] get the data and split raw & processed
 - [ ] include the rpi.lorawan items in BOM.csv
 - [ ] write the results.pynb
 - [ ] Write the readme, include...
