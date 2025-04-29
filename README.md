@@ -50,7 +50,7 @@ The following was conducted and used for the test.
 
 ### Results
 
-see [results.ipynb](./results.ipynb) for the test results.
+See [results.ipynb](./results.ipynb) for the test results. The stream of the raw data can be seen [here](https://portal.sagecontinuum.org/query-browser/?apps=.*lorawan-listener%3A0.0.17&nodes=W027&start=2025-04-21T16%3A57%3A08.116Z&page=0&chart=%28type%3Atimeseries%2CshowLines%3Atrue%2CshowPoints%3Afalse%29&end=2025-04-24T16%3A57%3A08.116Z).
 
 ## Lorawan Test Device (Arduino)
 
