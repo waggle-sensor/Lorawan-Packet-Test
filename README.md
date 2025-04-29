@@ -20,7 +20,7 @@ of signal and packet size range of our rpi.lorawan compute
 
 ## Test Set up
 
-To conduct the test the following was conducted and used.
+The following was conducted and used for the test.
 
 ### Items
 * Laptop
