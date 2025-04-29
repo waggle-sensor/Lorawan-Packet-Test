@@ -10,12 +10,13 @@ of signal and packet size range of our rpi.lorawan compute
 1. [rpi.lorawan Compute](#rpilorawan-compute)
 
 ## Repo Structure
- - **data**: raw and processed data that was generated using get.py
- - **html**: includes the folium map with the device and gateway locations with the results.
- - **images**: images used for markdown files.
- - **src**: the source code for the lorawan test device.
-    - **main**: includes the main code for the device.
-    - **setup**: this code is used to setup the device before flashing the main code.
+ - **[data](./data/)**: raw and processed data that was generated using get.py
+ - **[html](./html/)**: includes the folium map with the device and gateway locations with the results.
+ - **[images](./images/)**: images used for markdown files.
+ - **[src](./src/)**: the source code for the lorawan test device.
+    - **[main](./src/main/)**: includes the main code for the device.
+    - **[setup](./src/setup/)**: this code is used to setup the device before flashing the main code.
+    - **[codec.js](./src/codec.js)**: The decoder for the device.
 
 ## Test Set up
 
