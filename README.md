@@ -44,7 +44,7 @@ The following was conducted and used for the test.
     * The packets will go up to 64 bytes
 1. Drive to the next location
     * Start closer to the gateway and then go farther
-1. Repeat first 5 steps until you have reached the point where the device can't join anymore.
+1. Repeat first 6 steps until you have reached the point where the device can't join anymore.
     - This can either be range or object blockage issues
 1. Process your raw data and map the points.
 
