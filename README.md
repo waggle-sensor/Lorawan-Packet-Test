@@ -193,6 +193,6 @@ The rpi.lorawan was flashed with [waggle-rpi image](https://github.com/waggle-se
 
 ### Hardware
 
-The rest of the hardware in [bill of materials](./BOM.csv) for rpi.lorawan is the wiring. The rpi base and box were purposely left out as this does not affect the test in any way and can be replaced with your choosing. The following is an image of the rpi.lorawan compute with its wiring.
+The rest of the hardware in [bill of materials](./BOM.csv) for rpi.lorawan is the wiring. The rpi base, box, and metal plate were purposely left out as this does not affect the test in any way and can be replaced with your choosing. The following is an image of the rpi.lorawan compute with its wiring.
 
 <img src="./images/rpi_lorawan_insides.jpg" alt="rpi.lorawn wiring" width="400"/>
